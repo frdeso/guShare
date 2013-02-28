@@ -7,7 +7,7 @@ main.o: main.cpp
 mainwindow.o:mainwindow.cpp mainwindow.h
 	g++ -g -c mainwindow.cpp -o mainwindow.o -Wall `pkg-config gtkmm-3.0 --cflags --libs`
 configuration.o: configuration.cpp configuration.h
-	g++ -g -c configuration.cpp -o configuration.o
+	g++ -g -c configuration.cpp -o configuration.o `pkg-config gtkmm-3.0 --cflags --libs`
 confwindow.o:confwindow.cpp confwindow.h
 	g++ -g -c confwindow.cpp -o confwindow.o -Wall `pkg-config gtkmm-3.0 --cflags --libs`
 

@@ -24,6 +24,8 @@ public:
   std::string getuShareEnableDlna();
   
 private:
+  std::string pathConfFile_;
+  
   std::string ReadOneLine(std::string path);
   std::string uShareName_;
   std::string uShareIFace_;

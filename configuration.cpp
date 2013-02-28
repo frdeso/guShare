@@ -2,17 +2,20 @@
 #include <sstream>
 #include <iostream>
 #include <stdio.h>
+#include <gtkmm.h>
 
 Configuration::Configuration(){
   folderList_ = new std::vector<std::string>();
+  pathConfFile_ = Glib::get_current_dir()+std::string("/")+std::string("usharer.conf");
+
 }
 Configuration::~Configuration(){
   delete folderList_;
 }
 void Configuration::ReadConfigFile(std::string path)
 {
-   static char filename[] = "/home/frdeso/projets/gushare/usharer.conf";
-   FILE *file = fopen ( filename, "r" );
+//  static char filename[] = "/home/frdeso/projets/gushare/usharer.conf";
+   FILE *file = fopen ( pathConfFile_.c_str(), "r" );
    if ( file != NULL )
    {
       char line [ 128 ]; /* or other suitable maximum line size */
@@ -24,14 +27,14 @@ void Configuration::ReadConfigFile(std::string path)
    }
    else
    {
-      perror ( filename ); /* why didn't the file open? */
+      perror ( pathConfFile_.c_str() ); /* why didn't the file open? */
    }
 }
 
 void Configuration::WriteConfigFile(std::string path)
 {
-        static char filename[] = "/home/frdeso/projets/gushare/wusharer.conf";
-        FILE *file = fopen ( filename, "w" );
+//        static char filename[] = "/home/frdeso/projets/gushare/wusharer.conf";
+        FILE *file = fopen ( pathConfFile_.c_str(), "w" );
         if ( file != NULL ){
                 char line [ 128 ]; /* or other suitable maximum line size */
                 for(int i = 0; i < NUMBEROFARGUMENT; i++){
@@ -39,7 +42,7 @@ void Configuration::WriteConfigFile(std::string path)
                 }
                 fclose ( file );
         }else{
-                perror ( filename ); /* why didn't the file open? */
+                perror ( pathConfFile_.c_str() ); /* why didn't the file open? */
         }
 }
 

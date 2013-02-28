@@ -1,4 +1,5 @@
 #include "confwindow.h"
+#include <iostream>
 #include <string>
 ConfWindow::ConfWindow(Gtk::Window* parent, Configuration *config) : Gtk::Dialog("Configuration", *parent), m_VBox(get_vbox()) { //Récupération de la boîte verticale avec get_vbox().
     m_VBox->pack_start(uShareNameTxtBox_);
@@ -30,7 +31,7 @@ void ConfWindow::set_text(std::string texte) {
 
 void ConfWindow::populateConfig(Configuration *config)
 {
- uShareNameTxtBox_.set_text(config->getuShareName());
+uShareNameTxtBox_.set_text(config->getuShareName());
  uShareIFaceTxtBox_.set_text(config->getuShareIFace());
  uSharePortTxtBox_.set_text(config->getuSharePort());
  uShareTelnetPortTxtBox_.set_text(config->getuShareTelnetPort());
